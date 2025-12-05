@@ -1,0 +1,389 @@
+/* ==================================== */
+/* 0. Global Reset & Variables (NEW PALETTE) */
+/* ==================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+:root {
+    /* Palet Warna Baru Berdasarkan Logo */
+    --primary-teal: #005F5F;    /* Warna dominan logo (Cyan Tua) */
+    --accent-gold: #F0C420;     /* Warna aksen untuk kontras (Kuning/Emas) */
+    --bg-dark: #121212;         /* Latar belakang utama (Sangat Gelap) */
+    --bg-card-dark: #1E1E1E;    /* Latar belakang kartu/elemen (Sedikit lebih terang) */
+    --text-light: #FFFFFF;      /* Teks utama (Putih) */
+    --text-muted: #B0B0B0;      /* Teks sekunder (Abu-abu terang) */
+    --border-color: #333333;    /* Warna border halus */
+
+    --container-width: 1200px;
+    --header-height: 80px;
+    --border-radius: 8px;       /* Sudut yang lebih tegas */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.7;
+    color: var(--text-light);       /* Teks default putih */
+    background-color: var(--bg-dark); /* Latar belakang default gelap */
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ==================================== */
+/* 1. Typography & Utilities            */
+/* ==================================== */
+
+h1, h2, h3, h4 {
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    font-weight: 700;
+    color: var(--text-light); /* Heading putih */
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; text-align: center; margin-bottom: 1rem; }
+h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+p { margin-bottom: 1rem; color: var(--text-muted); }
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 4rem auto;
+    color: var(--text-muted);
+}
+
+section { padding: 6rem 0; }
+
+/* Latar belakang section bergantian (Gelap vs Sedikit Lebih Terang) */
+section:nth-child(odd) { background-color: var(--bg-dark); }
+section:nth-child(even) { background-color: var(--bg-card-dark); }
+
+.text-center { text-align: center; }
+
+/* Tombol (Buttons) - Disesuaikan dengan Palet Baru */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border-radius: 4px; /* Sudut lebih kotak */
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Tombol Utama: Emas dengan Teks Gelap */
+.btn-primary {
+    background-color: var(--accent-gold);
+    color: var(--bg-dark);
+    border-color: var(--accent-gold);
+}
+.btn-primary:hover {
+    background-color: #D4AC1C; /* Emas sedikit lebih gelap */
+    border-color: #D4AC1C;
+    transform: translateY(-2px);
+}
+
+/* Tombol Sekunder: Transparan dengan Border Emas/Teal */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
+}
+.btn-secondary:hover {
+    background-color: var(--accent-gold);
+    color: var(--bg-dark);
+}
+.btn-lg { padding: 1rem 2.5rem; font-size: 1.1rem; }
+.btn-sm { padding: 0.5rem 1.25rem; font-size: 0.9rem; }
+.btn-full { width: 100%; display: block; text-align: center; }
+
+/* ==================================== */
+/* 2. Header & Navigasi                 */
+/* ==================================== */
+
+#main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    height: var(--header-height);
+    background-color: rgba(0, 95, 95, 0.95); /* Teal transparan */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+#main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo { height: 50px; width: auto; } /* Logo baru */
+
+#main-header nav ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+#main-header nav ul li { margin-left: 2rem; }
+#main-header nav ul li a {
+    text-decoration: none;
+    color: var(--text-light); /* Teks menu putih */
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 0.95rem;
+}
+#main-header nav ul li a:hover { color: var(--accent-gold); }
+.nav-btn { margin-left: 1rem; padding: 0.5rem 1.25rem !important; }
+
+/* ==================================== */
+/* 3. Hero Section                      */
+/* ==================================== */
+
+#hero {
+    min-height: calc(90vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-dark);
+    /* Opsional: Tambahkan background image halus jika ada */
+    /* background-image: linear-gradient(rgba(0, 95, 95, 0.8), rgba(18, 18, 18, 1)), url('assets/hero-bg.jpg'); background-size: cover; */
+}
+
+#hero .container { max-width: 900px; text-align: left; }
+#hero h1 {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+    line-height: 1.2;
+}
+#hero h1 span { color: var(--accent-gold); } /* Jika ingin menonjolkan kata */
+#hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    color: var(--text-muted);
+    max-width: 700px;
+}
+.hero-buttons { display: flex; gap: 1rem; }
+
+/* ==================================== */
+/* 4. About Us (Detailed Profiles)      */
+/* ==================================== */
+
+.team-group-photo-container { margin-bottom: 4rem; text-align: center; }
+.team-group-photo {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+/* Grid untuk profil detail (1 kolom ke bawah) */
+.team-detailed-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; /* Jarak antar profil */
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Kartu Profil Detail */
+.team-member-detailed {
+    display: flex; /* Foto di kiri, teks di kanan */
+    background: var(--bg-card-dark);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+.team-member-detailed:hover { transform: translateY(-5px); border-color: var(--accent-gold); }
+
+/* Bagian Foto */
+.member-photo {
+    flex: 0 0 250px; /* Lebar tetap untuk foto */
+    position: relative;
+    overflow: hidden;
+}
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Memastikan foto mengisi area tanpa gepeng */
+    object-position: center top;
+    /* Filter opsional agar foto sedikit lebih gelap dan menyatu */
+    filter: brightness(0.9) contrast(1.1);
+}
+
+/* Bagian Konten (Teks) */
+.member-content {
+    flex: 1; /* Mengisi sisa ruang */
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.member-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+    font-size: 1.75rem;
+}
+.team-role-detailed {
+    color: var(--accent-gold); /* Peran dengan warna aksen */
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+.team-bio-detailed p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+.team-bio-detailed p:last-child { margin-bottom: 0; }
+
+/* ==================================== */
+/* 5. Services (Pricing Table - Dark)   */
+/* ==================================== */
+
+.pricing-table-container { overflow-x: auto; margin-top: 2rem; }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-card-dark);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+th, td {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--text-muted);
+}
+th { text-align: center; font-weight: 600; color: var(--text-light); background-color: rgba(0, 95, 95, 0.2); }
+th:first-child { text-align: left; }
+td:first-child { text-align: left; font-weight: 500; color: var(--text-light); }
+th.best-value {
+    background-color: var(--primary-teal); /* Teal solid untuk yang di-highlight */
+    color: var(--text-light);
+    position: relative;
+}
+/* Ribbon 'Recommended' */
+th.best-value::after {
+    content: "Recommended";
+    position: absolute;
+    top: 12px; right: -30px;
+    background: var(--accent-gold);
+    color: var(--bg-dark);
+    font-size: 0.7rem; font-weight: 700;
+    padding: 0.2rem 2.5rem;
+    transform: rotate(45deg);
+}
+tbody tr:hover { background-color: rgba(255,255,255,0.02); }
+td i.fa-check { color: var(--accent-gold); font-size: 1.2rem; }
+tfoot td { padding: 2rem 1.5rem; background: rgba(0,0,0,0.2); border-bottom: none; }
+
+/* ==================================== */
+/* 6. Contact Section (Dark Form)       */
+/* ==================================== */
+
+.contact-container {
+    display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: start;
+}
+.contact-info h2 { text-align: left; margin-bottom: 1rem; }
+.contact-details { list-style: none; margin-top: 2rem; }
+.contact-details li {
+    margin-bottom: 1.5rem; display: flex; align-items: center; font-size: 1.1rem;
+}
+.contact-details li i {
+    color: var(--accent-gold); font-size: 1.5rem; margin-right: 1rem; width: 25px;
+}
+.contact-details li a { color: var(--text-light); text-decoration: none; transition: color 0.3s; }
+.contact-details li a:hover { color: var(--accent-gold); }
+
+.contact-form-wrapper {
+    background: var(--bg-card-dark);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+.form-group { margin-bottom: 1.5rem; }
+.form-group label {
+    display: block; margin-bottom: 0.75rem; font-weight: 500; color: var(--text-light);
+}
+.form-group input, .form-group textarea {
+    width: 100%; padding: 1rem;
+    background-color: var(--bg-dark); /* Input field lebih gelap */
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-light);
+    font-family: inherit; font-size: 1rem;
+    transition: border-color 0.3s;
+}
+.form-group input:focus, .form-group textarea:focus {
+    outline: none; border-color: var(--accent-gold);
+}
+
+/* ==================================== */
+/* 7. Footer                            */
+/* ==================================== */
+
+footer {
+    background-color: #080808; /* Hampir hitam total */
+    padding: 5rem 0 2rem;
+    border-top: 1px solid var(--border-color);
+}
+.footer-content {
+    display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3rem;
+}
+.logo-footer { height: 40px; margin-bottom: 1rem; }
+.footer-brand p { max-width: 400px; }
+.footer-links a {
+    color: var(--text-muted); font-size: 1.5rem; margin-left: 1.5rem; transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--accent-gold); }
+.footer-bottom p { font-size: 0.9rem; color: #666; }
+
+/* ==================================== */
+/* 8. Floating WhatsApp & Responsive    */
+/* ==================================== */
+
+.whatsapp-float {
+    position: fixed; bottom: 30px; right: 30px;
+    background-color: #25D366; color: #FFF;
+    width: 60px; height: 60px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 100; transition: all 0.3s;
+}
+.whatsapp-float:hover { transform: scale(1.1); background-color: #128C7E; }
+
+/* Responsive Design untuk Profil Detail */
+@media (max-width: 992px) {
+    .team-member-detailed { flex-direction: column; } /* Foto di atas, teks di bawah pada tablet/HP */
+    .member-photo { flex: 0 0 300px; } /* Tinggi foto tetap */
+    .member-content { padding: 2rem; }
+    .hero-buttons { flex-direction: column; }
+    .btn-lg { width: 100%; text-align: center; }
+}
+
+@media (max-width: 768px) {
+    #main-header nav { display: none; } /* Sembunyikan menu di HP (perlu JS untuk toggle) */
+    #hero h1 { font-size: 2.5rem; }
+    .contact-container { grid-template-columns: 1fr; gap: 3rem; }
+    .member-photo { flex: 0 0 250px; }
+    .footer-content { flex-direction: column; gap: 2rem; text-align: center; }
+    .footer-links { margin-left: 0; margin-top: 1rem; }
+    .footer-brand { align-items: center; display: flex; flex-direction: column; }
+}
